@@ -1,0 +1,36 @@
+{
+  "name": "stations",
+  "version": "1.0.0",
+  "description": "Project objective: Service station directory and queue management.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "start": "nodemon ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://YWNBPROD@dev.azure.com/YWNBPROD/stations/_git/stations"
+  },
+  "keywords": [
+    "service_stations",
+    "carwash",
+    "schedule"
+  ],
+  "author": "YESWENOV",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.1",
+    "nodemon": "^3.0.1",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    
+  }
+}

@@ -14,7 +14,8 @@ var time_slot_Schema = new Schema({
     state: {type: String, required: true,enum: [ACTIVE,INACTIVE]},
     queue_schedule: {type: Schema.Types.ObjectId, required: true, ref: 'QueueSchedule'}
     },
-    {timestamps: true}); 
+    { timestamps : { createdAt: 'created_at' } }
+    ); 
 
 
 

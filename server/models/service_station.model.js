@@ -27,7 +27,7 @@ var service_station_Schema = new Schema({
         service: {type: service_Schema, required: true}
         }],
     state: {type: String, enum: [ACTIVE,INACTIVE]}},
-     {timestamps: true}
+    { timestamps : { createdAt: 'created_at' } }
      ); 
 
 

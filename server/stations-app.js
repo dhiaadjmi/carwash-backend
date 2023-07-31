@@ -45,19 +45,19 @@ mongoose.connection.on("error", () => {
   console.error.bind(console, "STATION_APP_DB connection error: ");
 });
 
-
+/** 
 //-------------------------------------
 //ToDo: ToDelete (Just for test)
 const user = new User();
 user.name= "Ali10";  
 user.password= "xxxxxx";
-user.email= "a@a.com";
+user.email= "a1@a.com";
 user.address= {street:"1 rue a...", city:"Mahdia", country:"Tunisie", postal_code:"5100"};
 user.phone = "123456";  
 user.date_of_birth= Date.now();
 user.save();
 //-------------------------------------
-
+*/
 
 
 // CommonJS module

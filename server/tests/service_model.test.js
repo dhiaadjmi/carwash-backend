@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Service = require('../models/service.model');
 
-const connectionDB= 'mongodb+srv://dhiaadjmi:UXXqcAxLyj6Bzvph@dhiaadjmi.n27nqpy.mongodb.net/?retryWrites=true&w=majority';
+require("dotenv").config({ path: "./config/config.env" });
+
+const connectionDB= process.env.STATIONS_DB_ATLAS_URI;
 
 describe('Service Model', () => {
   // Establish the database connection before running the tests

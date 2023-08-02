@@ -3,7 +3,11 @@ const mongoose = require('mongoose'); // Add this line to require mongoose
 
 const User = require('../models/user.model');
 const { isEmail } = require('validator');
-const connectionDB= 'mongodb+srv://dhiaadjmi:UXXqcAxLyj6Bzvph@dhiaadjmi.n27nqpy.mongodb.net/?retryWrites=true&w=majority';
+
+require("dotenv").config({ path: "./config/config.env" });
+
+const connectionDB= process.env.STATIONS_DB_ATLAS_URI; 
+
 describe('User Model', () => {
   // Establish the database connection before running the tests
   beforeAll(async () => {

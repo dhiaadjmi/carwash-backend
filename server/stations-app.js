@@ -11,21 +11,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 // we'll use chalk for displaying colorful messages on the terminal
 const chalk = require("chalk");
-const User = require("./models/user.model");
-
-
-
-
 
 // Initialize STATIONS_App: express application
 const stationsApp = express();
 
-
-
-
 // Stations_App_DB connection string
 const db_uri = process.env.STATIONS_DB_ATLAS_URI;
-
 
 // connecting Stations_App to Stations_App_DB (MongoDB Atlas Cluster)
 mongoose
@@ -44,6 +35,22 @@ mongoose
 mongoose.connection.on("error", () => {
   console.error.bind(console, "STATION_APP_DB connection error: ");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /** 
 //-------------------------------------

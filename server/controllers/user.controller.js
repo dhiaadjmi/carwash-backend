@@ -48,8 +48,64 @@ const getAllUsers = async (req, res) => {
     res.status(500).json({ error: 'Something went wrong while fetching users.' });
   }
 };
+const getUserById = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Find user by ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching the user.' });
+  }
+};
+const deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Utiliser findByIdAndDelete pour rechercher et supprimer l'utilisateur
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    // Vérifier si l'utilisateur a été trouvé et supprimé
+    if (!deletedUser) {
+      return res.status(404).json({ error: 'Utilisateur non trouvé.' });
+    }
+
+    res.status(200).json({ message: 'Utilisateur supprimé avec succès.' });
+  } catch (error) {
+    res.status(500).json({ error: 'Une erreur s\'est produite lors de la suppression de l\'utilisateur.' });
+  }
+};
+
+const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updates = req.body;
+
+    // Vérifier si l'utilisateur existe
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'Utilisateur non trouvé.' });
+    }
+
+    // Mettre à jour les informations de l'utilisateur
+    Object.assign(user, updates);
+    await user.save();
+
+    res.status(200).json({ message: 'Informations utilisateur mises à jour avec succès.' });
+  } catch (error) {
+    res.status(500).json({ error: 'Une erreur s\'est produite lors de la mise à jour des informations utilisateur.' });
+  }
+};
 
 module.exports = {
   createUser,
   getAllUsers,
+  getUserById,
+  deleteUser,
+  updateUser,
 };

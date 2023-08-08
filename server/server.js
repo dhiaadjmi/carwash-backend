@@ -3,10 +3,12 @@
 /*
  * Copyright (c) YESWENOV
  */
+
 const express = require('express');
-const app = express();
+//const app = express();
 var cors = require('cors')
 const userRoutes = require('../server/routes/user.route');
+const serviceRoutes = require('../server/routes/service.route');
 
 require('dotenv').config({ path: './config/config.env' });
 // we'll use chalk for displaying colorful messages on the terminal
@@ -34,14 +36,14 @@ const server = stationsApp.listen(port, hostname, (error) => {
     );
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+stationsApp.use(express.json());
+stationsApp.use(express.urlencoded({ extended: true }));
+stationsApp.use(cors());
 // Middleware for parsing JSON request bodies
-app.use(express.json());
+stationsApp.use(express.json());
 
 
-app.get('/', (req, res) => {
+stationsApp.get('/', (req, res) => {
     res.send('Welcome to the server!'); 
 });
 
@@ -51,7 +53,10 @@ app.use((req, res,next) => {
 });
 */
 
-app.use('/users', userRoutes);
+stationsApp.use('/users', userRoutes);
+stationsApp.use('/services', serviceRoutes);
+
+//stationsApp.use('/service_stations', s);
 
 
 // Export the server instance to be used in other files

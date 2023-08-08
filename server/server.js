@@ -7,8 +7,11 @@
 const express = require('express');
 //const app = express();
 var cors = require('cors')
-const userRoutes = require('../server/routes/user.route');
-const serviceRoutes = require('../server/routes/service.route');
+
+const serviceRouter = require('../server/routes/service.route');
+
+const userRouter = require('../server/routes/user.route');
+
 
 require('dotenv').config({ path: './config/config.env' });
 // we'll use chalk for displaying colorful messages on the terminal
@@ -47,16 +50,21 @@ stationsApp.get('/', (req, res) => {
     res.send('Welcome to the server!'); 
 });
 
+
 /** 
 app.use((req, res,next) => {
     res.status(404).send('404 not found'); 
 });
 */
 
-stationsApp.use('/users', userRoutes);
-stationsApp.use('/services', serviceRoutes);
+
+stationsApp.use('/users', userRouter);
+stationsApp.use('/services', serviceRouter);
 
 //stationsApp.use('/service_stations', s);
+
+
+
 
 
 // Export the server instance to be used in other files

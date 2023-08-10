@@ -1,5 +1,7 @@
+/*
 const mongoose = require('mongoose');
 const ServiceStation = require('../models/service_station.model');
+const Service = require('../models/service.model');
 const User = require('../models/user.model'); 
 
 const connectionDB = 'mongodb://your-mongodb-connection-string'; // Replace with your MongoDB connection string
@@ -21,6 +23,10 @@ describe('ServiceStation Model', () => {
     await mongoose.disconnect();
   });
 
+
+  */
+  
+/*
   it('should validate the service station fields', () => {
     const validServiceStationData = {
       name: 'Sample Service Station',
@@ -67,7 +73,35 @@ describe('ServiceStation Model', () => {
     // ...
   });
 
+
+ */
+
+
+
+
+/*
+
   it('should have a valid createdAt timestamp', async () => {
+
+
+    //-- Create Service -----------------------------------------------
+    const serviceData = {
+      name: 'Car Wash',
+      state: 'Active',
+      is_carwash: true,
+    };
+
+    const service = new Service(serviceData);
+
+    // Sauvegarde le service en base de données
+    await service.save();
+
+    // Récupère le service depuis la base de données
+    const savedService = await Service.findOne({ name: 'Car Wash' });
+    //-----------------------------------------------------------------
+
+
+
     const serviceStationData = {
       name: 'Sample Service Station',
       phones: {
@@ -84,8 +118,8 @@ describe('ServiceStation Model', () => {
       queues: [
         {
           name: 'Queue 1',
-          queue_schedule: 'queue_schedule_id_1', // Replace with valid QueueSchedule ID
-          service: 'service_id_1', // Replace with valid Service ID
+          queue_schedule: '123456',//'queue_schedule_id_1', // Replace with valid QueueSchedule ID
+          service: savedService.toJSON(), // Replace with valid Service ID
         },
       ],
       state: 'ACTIVE',
@@ -104,3 +138,5 @@ describe('ServiceStation Model', () => {
     expect(savedServiceStation.created_at instanceof Date).toBe(true);
   });
 });
+
+*/

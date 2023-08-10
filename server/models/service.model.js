@@ -13,7 +13,7 @@ var service_Schema = new Schema({
     state: {type: String, required: true},
     is_carwash: {type: Boolean, required: true}
     },
-    { timestamps : { createdAt: 'created_at' } }
+    { timestamps : true}
      ); 
 
 

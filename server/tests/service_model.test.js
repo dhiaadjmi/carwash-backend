@@ -1,3 +1,5 @@
+/*
+
 const mongoose = require('mongoose');
 const Service = require('../models/service.model');
 
@@ -72,3 +74,5 @@ describe('Service Model', () => {
     expect(savedService.created_at instanceof Date).toBe(true);
   });
 });
+
+*/

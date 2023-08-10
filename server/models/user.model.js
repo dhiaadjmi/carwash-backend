@@ -29,7 +29,7 @@ var user_Schema = new Schema({
         },
     password: {type: String, required: true}
     }, 
-    { timestamps : { createdAt: 'created_at' } }
+    { timestamps : true }
     ); 
 
 // Compile User model from user_Schema definition

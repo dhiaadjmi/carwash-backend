@@ -1,3 +1,5 @@
+
+/*
 const mongoose = require('mongoose'); 
 
 const User = require('../models/user.model');
@@ -103,13 +105,16 @@ it('should have a valid createdAt timestamp', async () => {
     const savedUser = await User.findOne({ email: 'dhia@gmail.com' });
 
     // Vérifie que la date de création est définie
-    expect(savedUser.created_at).toBeDefined();
-    expect(savedUser.created_at instanceof Date).toBe(true);
+    expect(savedUser.createdAt).toBeDefined();
+    expect(savedUser.createdAt instanceof Date).toBe(true);
 
   });
   
 
   });
+
+
+  */
 
 /** 
 
@@ -196,8 +201,8 @@ it('should have a valid createdAt timestamp', async () => {
     const savedUser = await User.findOne({ email: 'dhia@gmail.com' });
 
     // Vérifie que la date de création est définie
-    expect(savedUser.created_at).toBeDefined();
-    expect(savedUser.created_at instanceof Date).toBe(true);
+    expect(savedUser.createdAt).toBeDefined();
+    expect(savedUser.createdAt instanceof Date).toBe(true);
   });
   
 

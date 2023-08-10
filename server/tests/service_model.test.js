@@ -6,7 +6,7 @@ require("dotenv").config({ path: "./config/config.env" });
 const connectionDB= process.env.STATIONS_DB_ATLAS_URI;
 
 describe('Service Model', () => {
-  // Establish the database connection before running the tests
+
   beforeAll(async () => {
     await mongoose.connect(connectionDB, {
       useNewUrlParser: true,
@@ -14,7 +14,6 @@ describe('Service Model', () => {
     });
   });
 
-  // Clean up the database before each test
   beforeEach(async () => {
     await Service.deleteMany({});
   });
@@ -40,7 +39,7 @@ describe('Service Model', () => {
 
   it('should not validate a service with missing required fields', () => {
     const invalidServiceData = {
-      // Missing name, state, and is_carwash
+
     };
 
     const service = new Service(invalidServiceData);

@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const createUser = async (req, res) => {
   try {
     const { name, date_of_birth, address, phone, profile_photo, email, password } = req.body;
-
     // Vérifier si l'email est déjà utilisé
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -29,10 +28,8 @@ const createUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
-
     // Sauvegarder les données de l'utilisateur dans la base de données
     const savedUser = await newUser.save();
-
     res.status(201).json(savedUser);
   } catch (error) {
     res.status(400).json({ error: error.message });

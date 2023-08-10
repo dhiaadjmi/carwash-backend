@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); // Add this line to require mongoose
+const mongoose = require('mongoose'); 
 
 const User = require('../models/user.model');
 const { isEmail } = require('validator');
@@ -8,7 +8,7 @@ require("dotenv").config({ path: "./config/config.env" });
 const connectionDB= process.env.STATIONS_DB_ATLAS_URI; 
 
 describe('User Model', () => {
-  // Establish the database connection before running the tests
+
   beforeAll(async () => {
     await mongoose.connect(connectionDB, {
       useNewUrlParser: true,
@@ -17,14 +17,12 @@ describe('User Model', () => {
   });
 
 
-   // Clean up the database before each test
    beforeEach(async () => {
     await User.deleteMany({});
   });
 
 
 
-  // Close the database connection after running all the tests
   afterAll(async () => {
     await mongoose.disconnect();
   });
@@ -46,16 +44,15 @@ describe('User Model', () => {
         email: 'dhia@gmail.com', // Email valide
         password: '123456'
       };
-  
-      // Crée une instance de l'utilisateur avec les données valides
+
       const user = new User(validUserData);
   
-      // Vérifie que la validation de l'email passe
+
       const validationError = user.validateSync();
       expect(validationError).toBeUndefined();
     });
   
-    // Teste la validation de l'email invalide
+ 
     it('should not validate an invalid email address', () => {
       const invalidUserData = {
         name: 'dhia',

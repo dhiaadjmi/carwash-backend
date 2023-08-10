@@ -1,12 +1,12 @@
 const express = require('express');
 const serviceRouter = express.Router();
 const serviceController = require('../controllers/service.controller');
+const authController = require('../controllers/auth.controller'); 
 
-// API endpoint to create a new service
-serviceRouter.post('/create', serviceController.createService);
-serviceRouter.get('/list', serviceController.getAllServices);
-serviceRouter.get('/:id', serviceController.getServiceById);
-serviceRouter.delete('/:id', serviceController.deleteService);
-serviceRouter.put('/:id', serviceController.updateService);
+serviceRouter.post('/create',authController.verifyToken, serviceController.createService);
+serviceRouter.get('/list',authController.verifyToken, serviceController.getAllServices);
+serviceRouter.get('/:id', authController.verifyToken,serviceController.getServiceById);
+serviceRouter.delete('/:id', authController.verifyToken,serviceController.deleteService);
+serviceRouter.put('/:id',authController.verifyToken, serviceController.updateService);
 
 module.exports = serviceRouter;

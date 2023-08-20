@@ -134,8 +134,8 @@ describe('ServiceStation Model', () => {
     const savedServiceStation = await ServiceStation.findOne({ name: 'Sample Service Station' });
 
     // Verify that the createdAt timestamp is defined and is an instance of Date
-    expect(savedServiceStation.createdAt).toBeDefined();
-    expect(savedServiceStation.createdAt instanceof Date).toBe(true);
+    expect(savedServiceStation.created_at).toBeDefined();
+    expect(savedServiceStation.created_at instanceof Date).toBe(true);
   });
 });
 

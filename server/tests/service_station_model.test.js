@@ -84,8 +84,8 @@ describe('ServiceStation Model', () => {
       queues: [
         {
           name: 'Queue 1',
-          queue_schedule: 'queue_schedule_id_1', // Replace with valid QueueSchedule ID
-          service: 'service_id_1', // Replace with valid Service ID
+          queue_schedule: '123456',//'queue_schedule_id_1', // Replace with valid QueueSchedule ID
+          service: savedService.toJSON(), // Replace with valid Service ID
         },
       ],
       state: 'ACTIVE',
@@ -100,7 +100,7 @@ describe('ServiceStation Model', () => {
     const savedServiceStation = await ServiceStation.findOne({ name: 'Sample Service Station' });
 
     // Verify that the createdAt timestamp is defined and is an instance of Date
-    expect(savedServiceStation.created_at).toBeDefined();
-    expect(savedServiceStation.created_at instanceof Date).toBe(true);
+    expect(savedServiceStation.createdAt).toBeDefined();
+    expect(savedServiceStation.createdAt instanceof Date).toBe(true);
   });
 });

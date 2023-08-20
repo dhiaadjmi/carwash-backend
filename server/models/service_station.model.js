@@ -3,6 +3,7 @@
 /*
  * Copyright (c) YESWENOV
  */ 
+const Service = require('../models/service.model');
 
 const mongoose = require('mongoose');
 
@@ -24,10 +25,10 @@ var service_station_Schema = new Schema({
     queues: [{
         name: {type: String, required: true},
         queue_schedule: {type: Schema.Types.ObjectId, ref: 'QueueSchedule'},
-        service: {type: service_Schema, required: true}
-        }],
-    state: {type: String, enum: [ACTIVE,INACTIVE]}},
-    { timestamps : { createdAt: 'created_at' } }
+        service: {type: Service.schema /*service_Schema*/, required: true}
+    }],
+    state: {type: String, enum: ['ACTIVE','INACTIVE']}},
+    { timestamps : true }
      ); 
 
 

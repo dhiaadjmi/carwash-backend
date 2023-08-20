@@ -12,7 +12,11 @@ const serviceRouter = require('../server/routes/service.route');
 
 const userRouter = require('../server/routes/user.route');
 
+const service_stationRouter= require('../server/routes/service_station.route');
 
+const queueRouter = require('../server/routes/queue_schedule.route');
+
+const timeSlotRouter = require('../server/routes/time_slot.route');
 require('dotenv').config({ path: './config/config.env' });
 // we'll use chalk for displaying colorful messages on the terminal
 const chalk = require("chalk");
@@ -61,9 +65,11 @@ app.use((req, res,next) => {
 stationsApp.use('/users', userRouter);
 stationsApp.use('/services', serviceRouter);
 
-//stationsApp.use('/service_stations', s);
+stationsApp.use('/stations', service_stationRouter);
 
+stationsApp.use('/queues', queueRouter);
 
+stationsApp.use('/timeslot', timeSlotRouter);
 
 
 

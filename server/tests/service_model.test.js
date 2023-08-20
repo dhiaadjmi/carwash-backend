@@ -68,7 +68,7 @@ describe('Service Model', () => {
     const savedService = await Service.findOne({ name: 'Car Wash' });
 
     // Vérifie que la date de création est définie
-    expect(savedService.created_at).toBeDefined();
-    expect(savedService.created_at instanceof Date).toBe(true);
+    expect(savedService.createdAt).toBeDefined();
+    expect(savedService.createdAt instanceof Date).toBe(true);
   });
 });

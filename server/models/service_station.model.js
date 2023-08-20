@@ -3,7 +3,6 @@
 /*
  * Copyright (c) YESWENOV
  */ 
-const Service = require('../models/service.model');
 
 const Service = require('../models/service.model');
 

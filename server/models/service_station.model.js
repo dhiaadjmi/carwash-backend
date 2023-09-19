@@ -26,7 +26,7 @@ var service_station_Schema = new Schema({
     queues: [{
         name: {type: String, required: true},
         queue_schedule: {type: Schema.Types.ObjectId, ref: 'QueueSchedule'},
-        service: {type: Service.schema /*service_Schema*/, required: true}
+        service: {type: Service.schema , required: true}
     }],
     state: {type: String, enum: ['ACTIVE','INACTIVE']}},
     { timestamps : true }

@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 // Contrôleur pour créer un nouvel utilisateur
 const createUser = async (req, res) => {
   try {
-    const { name, date_of_birth, address, phone, profile_photo, email, password } = req.body;
+    const { name, date_of_birth, address, phone, profile_photo, email, password ,role} = req.body;
     // Vérifier si l'email est déjà utilisé
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -27,6 +27,7 @@ const createUser = async (req, res) => {
       profile_photo,
       email,
       password: hashedPassword,
+      role,
     });
     // Sauvegarder les données de l'utilisateur dans la base de données
     const savedUser = await newUser.save();
@@ -98,6 +99,9 @@ const updateUser = async (req, res) => {
     res.status(500).json({ error: 'Une erreur s\'est produite lors de la mise à jour des informations utilisateur.' });
   }
 };
+
+
+
 
 module.exports = {
   createUser,

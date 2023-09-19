@@ -7,7 +7,7 @@
 const express = require('express');
 //const app = express();
 var cors = require('cors')
-
+const path = require('path');
 const serviceRouter = require('../server/routes/service.route');
 
 const userRouter = require('../server/routes/user.route');
@@ -17,8 +17,11 @@ const service_stationRouter= require('../server/routes/service_station.route');
 const queueRouter = require('../server/routes/queue_schedule.route');
 
 const timeSlotRouter = require('../server/routes/time_slot.route');
+
+const uploadRouter = require('../server/routes/upload.route');
+
 require('dotenv').config({ path: './config/config.env' });
-// we'll use chalk for displaying colorful messages on the terminal
+
 const chalk = require("chalk");
 
 const mongoose = require('mongoose');
@@ -71,6 +74,9 @@ stationsApp.use('/queues', queueRouter);
 
 stationsApp.use('/timeslot', timeSlotRouter);
 
+stationsApp.use('/upload', uploadRouter);
+
+stationsApp.use(express.static(path.join(__dirname,"images")));
 
 
 // Export the server instance to be used in other files

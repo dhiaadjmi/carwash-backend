@@ -1,9 +1,0 @@
-# config environment variables
-config/config.env
-
-# package dependencies
-node_modules
-package-lock.json
-
-# production distribution folder
-dist/

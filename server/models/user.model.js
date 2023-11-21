@@ -6,7 +6,6 @@
 
 const mongoose = require('mongoose');
 
-// validator: a library of string validators and sanitizers
 const { isEmail } = require('validator');
 
 var Schema = mongoose.Schema;
@@ -28,7 +27,7 @@ var user_Schema = new Schema({
         validate: [isEmail, 'Please enter a valid email address.']
         },
     password: {type: String, required: true},
-    role: {type: String, enum: ['admin','user','owner']}},
+    role: {type: String, enum: ['admin','client','responsable']}},
     { timestamps : true }
     ); 
 

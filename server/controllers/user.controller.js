@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
 
+// Importez le fichier upload.route.js
+const uploadRouter = require('../routes/upload.route');
 // Contrôleur pour créer un nouvel utilisateur
 const createUser = async (req, res) => {
   try {
     const { name, date_of_birth, address, phone, profile_photo, email, password ,role} = req.body;
+
+   
+
     // Vérifier si l'email est déjà utilisé
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -31,11 +38,15 @@ const createUser = async (req, res) => {
     });
     // Sauvegarder les données de l'utilisateur dans la base de données
     const savedUser = await newUser.save();
+     if (req.file) {
+      savedUser.profile_photo = req.file.path; 
+    }
     res.status(201).json(savedUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
+
 
 const getAllUsers = async (req, res) => {
   try {

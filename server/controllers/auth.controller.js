@@ -42,27 +42,7 @@ const login = async (req, res) => {
     }
   };
 
-/** 
-  var secretKey = process.env.JWT_SECRET_KEY;
 
-  console.log("Secret Key:", secretKey); 
-  
-  verifyToken = (req, res, next) => {
-    let token = req.header('Authorization'); 
-    if (!token) {
-      return res.status(401).json({ msg: 'Access rejected.' });
-    }
-    try {
-      token = token.replace('Bearer ', ''); 
-      jwt.verify(token, secretKey);
-      next();
-    } catch (e) {
-      console.error('Token verification error:', e);
-      res.status(400).json({ msg: e.message });
-    }
-  };
-  
-  */
   var secretKey = process.env.JWT_SECRET_KEY;
   verifyToken = (req, res, next) => {
     let token = req.header('Authorization');
@@ -82,22 +62,40 @@ const login = async (req, res) => {
     }
   };
 
-  
-  
-  
-  
-  
-  
 
+  const decodeToken = async (req, res) => {
+    try {
+      const token = req.header('Authorization');
+      if (!token) {
+        console.log('No token provided.');
+        return res.status(400).json({ msg: 'No token provided.' });
+      }
+  
+      console.log('Decoding token:', token);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+      console.log('Token decoded successfully:', decoded);
+  
+      const userId = decoded.userId;
+      console.log('User ID from token:', userId);
+  
+      // Assuming your User model is imported correctly
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        console.error('User not found.');
+        return res.status(404).json({ error: 'User not found.' });
+      }
+  
+      return res.status(200).json({ user });
+    } catch (e) {
+      console.error('Token decoding error:', e);
+      res.status(400).json({ msg: 'Token decoding error: ' + e.message });
+    }
+  };
   
   
-  
-  
-  
-  
-
-
 module.exports = {
   login,
   verifyToken,
+  decodeToken,
 };
